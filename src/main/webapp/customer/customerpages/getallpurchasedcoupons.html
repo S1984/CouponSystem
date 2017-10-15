@@ -1,0 +1,39 @@
+<div ng-controller="getallpurchasedcoupons as main">
+				<div class="w3-container w3-black">
+					<h3 class="center">Purchased Coupons</h3>
+				</div>
+		<div style="margin-left: 2%" ng-init="main.getallpurchasedcoupons()">
+		<!-- <main ui-view="" class="class" >  -->
+		<br class="class">
+				<table style="margin-left: 2%" border="1" ng-show="!main.getAllCouponsFailed.flag">
+						<tr>
+							<th>INDEX</th>
+							<th>ID</th>
+							<th>TITLE</th>
+							<th>START DATE</th>
+							<th>END DATE</th>
+							<th>TYPE</th>
+							<th>MASSAGE</th>
+							<th>PRICE</th>
+							<th>IMAGE</th>
+						</tr>
+						<tr  align="center" ng-repeat="coup in main.coupons | orderBy :'id' ">
+							<td>{{$index + 1}}</td>
+							<td>{{coup.id}}</td>
+							<td>{{coup.title}}</td>
+							<td>{{coup.startDate | date : 'MMM d, y'}}</td>
+							<td>{{coup.endDate | date : 'MMM d, y'}}</td>
+							<td>{{coup.type}}</td>
+							<td>{{coup.message}}</td>
+							<td>{{coup.price}}</td>
+                            <td><img ng-src="{{coup.image}}" alt="Coupon img" height="120" width="120"/></td>
+				
+							</td>
+						</tr>
+					</table>
+					    <p style="background-color:OrangeRed; font-weight:bold " ng-show="main.getAllCouponsFailed.flag ">
+        {{main.messageGetAllCoupons.text}} </p>
+				<!--  </main>  -->
+			</div>
+		
+	

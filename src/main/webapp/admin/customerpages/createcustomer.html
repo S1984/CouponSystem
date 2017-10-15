@@ -1,0 +1,43 @@
+<div ng-controller="AdminCreateCustomer as main">
+<div class="w3-container w3-Teal center">	<h3>Customers</h3>	</div>
+</br>
+    <div style="margin-left:2%">
+
+    <h4><u>Create a new customer</u> </h4>  
+    <form ng-submit="main.createCustomer()">
+    <table>
+    <tr>
+       <th align="left">ID:</th>
+       <th>
+         <input ng-model="main.newCustomer.cust.id" type="number" placeholder="Insert only digits" required="required" />
+         </th>
+         </tr>
+         <tr>
+    <th align="left">NAME:</th>
+    <th>
+            <input ng-model="main.newCustomer.cust.name" type="text" placeholder="Enter your name " required="required"/>
+        </th>
+        </tr>
+        <tr>
+            <th align="left">PASSWORD:</th>
+            <th>
+             <input ng-model="main.newCustomer.cust.password" type="text" placeholder="Enter your password" required="required"/>
+        </th>
+        </tr>
+        <tr>
+        <th>
+        </br>
+        <button  onclick="submit">Add Customer</button>
+        </th>
+        </tr>
+        
+        </table>
+        </form>
+        <br/>
+    <p style="background-color:Chartreuse" ng-show="main.createCustomerSucceed.flag">
+        {{main.messageFromNewCustomer.text}}</p>
+
+    <p style="background-color:OrangeRed;  font-weight:bold" ng-show="!main.createCustomerSucceed.flag">
+        {{main.messageFromNewCustomer.text}}</p>
+</div>
+</div>

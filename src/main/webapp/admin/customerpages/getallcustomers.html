@@ -1,0 +1,45 @@
+<div ng-controller="AdminGetAllCustomers as main">
+<div class="w3-container w3-Teal center">	<h3>Customers</h3>	</div>
+</br>
+    <div style="margin-left:2%">
+   <table  border="1">
+            <tr>
+                <th>INDEX</th>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>PASSWORD</th>
+            </tr>
+            <tr ng-repeat="cust in main.customers | orderBy :'id' ">
+                <td>{{$index + 1}}</td>
+                <td>{{cust.id}}</td>
+                <td>{{cust.name}}</td>
+                
+                <td>
+                    <p ng-show="!main.edits[$index]">{{cust.password}}</p>
+                        <input type="text" ng-show="main.edits[$index]" style="background:lightyellow"
+                        ng-model="cust.password"></td>
+                <td><button class="button" ng-click="main.deleteCustomer(cust.id)">X</button></td>
+ 
+                <td>
+                    <button class="button button2" ng-show="!main.edits[$index]"
+                    ng-click="main.editFunc(cust,$index)">edit</button>
+                  
+                    <button class="button button3" ng-show="main.edits[$index]"
+                    ng-click="main.editFunc(cust,$index)">show</button>
+                </td> 
+        </tr>
+        </table>
+
+    <p style="background-color:OrangeRed; font-weight:bold " ng-show="main.getAllCustomersFailed.flag ">
+        {{main.messageGetAllCustomers.text}} </p>
+        
+        <p style="background-color:Chartreuse" ng-show="main.deleteCustomerSucceed.flag">
+		{{main.messageFromDeleteCustomer.text}}</p>
+	<p style="background-color:OrangeRed;  font-weight:bold" ng-show="main.deleteCustomerFailed.flag">
+		{{main.messageFromDeleteCustomer.text}}</p>
+	<p style="background-color:Chartreuse" ng-show="main.updateCustomerSucceed.flag">
+		{{main.messageFromUpdateCustomer.text}}</p>
+	<p style="background-color:OrangeRed;  font-weight:bold" ng-show="main.updateCustomerFailed.flag">
+		{{main.messageFromUpdateCustomer.text}}</p>
+</div>
+</div>

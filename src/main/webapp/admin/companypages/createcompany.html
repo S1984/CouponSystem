@@ -1,0 +1,44 @@
+<div ng-controller="AdminCreateCompany as main">
+<div class="w3-container w3-Cyan center">	<h3>Companies</h3>	</div>
+    <br>
+    <div style="margin-left:2%">
+    
+    <!-- Create new company-->
+    <h3><u>Create a new company</u></h3>
+    <br>
+    <form ng-submit="main.createCompany()">
+    <table>
+    <tr>
+    <th align="left">ID:</th>
+    <th> <input ng-model="main.newCompany.comp.id" type="number" placeholder="Insert only digits" required="required" /> </th>
+    </tr>
+    <tr>
+    <th align="left">NAME:</th>
+    <th><input ng-model="main.newCompany.comp.name" type="text" placeholder="Enter your company name " required="required" /></th>
+    </tr>
+    <tr>
+    <th align="left">PASSWORD:</th>
+    <th><input ng-model="main.newCompany.comp.password" type="text" placeholder="Enter your password" required="required"/></th>
+    </tr>
+    <tr>
+    <th align="left">EMAIL:</th>
+    <th><input ng-model="main.newCompany.comp.email" type="email" placeholder="Enter your Email" required="required" /></th>
+    </tr>
+    <tr>
+    <th>
+    <br/>
+     <button onclick="submit">Add Company</button>
+     </th>
+    </tr>
+    </table>
+    
+      
+    </form>
+    <br/>
+    <p style="background-color:Chartreuse" ng-show="main.createCompanySucceed.flag">
+        {{main.messageFromNewCompany.text}}</p>
+
+    <p style="background-color:OrangeRed;  font-weight:bold" ng-show="!main.createCompanySucceed.flag">
+        {{main.messageFromNewCompany.text}}</p>
+    </div>
+</div>

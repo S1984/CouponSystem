@@ -1,0 +1,48 @@
+<div ng-controller="AdminGetAllCompanies as main">
+<div class="w3-container w3-Cyan center">	<h3>Companies</h3>	</div>
+      <div style="margin-left:2%">
+      <br>
+     
+    <table border="1">
+        <tr>
+            <th>INDEX</th>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+        </tr>
+        <tr ng-repeat="comp in main.companies | orderBy :'id' ">
+            <td>{{$index + 1}}</td>
+            <td>{{comp.id}}</td>
+            <td>{{comp.name}}</td>
+            <td>
+                <p ng-show="!main.edits[$index]">{{comp.email}}</p>
+                <input type="email" ng-show="main.edits[$index]" style="background:lightyellow;" ng-model="comp.email"></td>
+            <td>
+                <p ng-show="!main.edits[$index]">{{comp.password}}</p>
+                <input type="text" ng-show="main.edits[$index]" style="background:lightyellow" ng-model="comp.password"></td>
+            <td><button class="button" ng-click="main.deleteCompany(comp.id)">X</button></td>
+
+            <td>
+                <button class="button button2" ng-show="!main.edits[$index]" ng-click="main.editFunc(comp,$index)">edit</button>
+
+                <button class="button button3" ng-show="main.edits[$index]"  ng-click="main.editFunc(comp,$index)">show</button>
+            </td>
+        </tr>
+    </table>
+    
+
+    <p style="background-color:OrangeRed; font-weight:bold " ng-show="main.getAllCompaniesFailed.flag ">
+        {{main.messageGetAllCompanies.text}} </p>
+	<p style="background-color:Chartreuse" ng-show="main.deleteComapnySucceed.flag">
+		{{main.messageFromDeleteComapny.text}}</p>
+	<p style="background-color:OrangeRed;  font-weight:bold" ng-show="main.deleteComapnyFailed.flag">
+		{{main.messageFromDeleteComapny.text}}</p>
+	<p style="background-color:Chartreuse" ng-show="main.updateComapnySucceed.flag">
+		{{main.messageFromUpdateComapny.text}}</p>
+	<p style="background-color:OrangeRed;  font-weight:bold" ng-show="main.updateComapnyFailed.flag">
+		{{main.messageFromUpdateComapny.text}}</p>
+		
+				
+    </div>
+</div>

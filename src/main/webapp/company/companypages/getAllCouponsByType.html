@@ -1,0 +1,34 @@
+<div ng-controller="CompanyGetAllCoupons as main">
+	<div ng-init="show=false">
+		<div class="w3-container w3-theme-d2 center">
+			<h3>Show by Type</h3>
+		</div>
+		<br>
+		<div style="margin-left: 2%">
+
+			<h3>
+				<u>Select a coupon type</u>
+			</h3>
+			<p>
+				<select ng-model="main.coupp.type" required="required"
+					ng-change="main.getMethod('type'); show=true">
+					<option value="" selected disabled hidden>Choose coupon
+						type</option>
+					<option value="RESTURANS">RESTURANS</option>
+					<option value="ELECTRICITY">ELECTRICITY</option>
+					<option value="FOOD">FOOD</option>
+					<option value="HEALTH">HEALTH</option>
+					<option value="SPORTS">SPORTS</option>
+					<option value="CAMPING">CAMPING</option>
+					<option value="TRAVELLING">TRAVELLING</option>
+				</select>
+			</p>
+		</div>
+	</div>
+	<div style="margin-left: 2%">
+
+		<div ng-include="'companypages/showTable.html'"
+			ng-show="show&&!main.getAllCouponsFailed.flag"></div>
+		<div ng-include="'companypages/flag.html'"></div>
+	</div>
+</div>

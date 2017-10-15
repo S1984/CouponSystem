@@ -1,0 +1,28 @@
+<div ng-controller="AdminGetCustomer as main">
+<div class="w3-container w3-Teal center">	<h3>Customers</h3>	</div>
+</br>
+    <div style="margin-left:2%">
+	<h4><u>Get a specific customer by ID:</u></h4>
+	<div ng-init="main.loadAllCustomers()">
+		<select ng-model="main.idToGet" ng-options="cust.id as cust.id for cust in main.customers" ng-change="main.getCustomer()">
+			<option value="" selected disabled hidden>-- choose ID --</option>
+		</select>
+	</div>
+
+	<p style="background-color: OrangeRed; font-weight: bold" ng-show="main.getAllCustomersFailed.flag ">
+		{{main.messageGetAllCustomers.text}}</p>
+	</br>
+		<table ng-show="main.getCustomerSucceed.flag" border="1">
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>PASSWORD</th>
+			</tr>
+			<tr>
+				<td>{{main.getedCustomer.cust.id}}</td>
+				<td>{{main.getedCustomer.cust.name}}</td>
+				<td>{{main.getedCustomer.cust.password}}</td>
+			</tr>
+		</table>
+</div>
+</div>

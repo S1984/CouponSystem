@@ -1,0 +1,30 @@
+<div ng-controller="AdminGetCompany as main">
+<div class="w3-container w3-Cyan center">	<h3>Companies</h3>	</div>
+      <div style="margin-left:2%">
+      <br>
+    <h4><u>Get a specific company by ID: </u></h4>
+    <div ng-init="main.loadAllCompanys()">
+        <select ng-model="main.idToGet" ng-options="comp.id as comp.id for comp in main.companies" ng-change="main.getCompany()">
+        <option selected disabled hidden value="" >-- Select ID --</option>
+        </select>
+    </div>
+
+    <p style="background-color:OrangeRed; font-weight:bold " ng-show="main.getAllCompaniesFailed.flag ">
+        {{main.messageGetAllCompanies.text}} </p>
+    <br>
+        <table ng-show="main.getCompanySucceed.flag" border="1">
+            <tr>
+                <th>ID </th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+            </tr>
+            <tr>
+                <td>{{main.getedCompany.comp.id}}</td>
+                <td>{{main.getedCompany.comp.name}}</td>
+                <td>{{main.getedCompany.comp.email}}</td>
+                <td>{{main.getedCompany.comp.password}}</td>
+            </tr>
+        </table>
+</div>
+</div>

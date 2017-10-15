@@ -1,0 +1,26 @@
+<div ng-controller="CompanyGetByPrice as main">
+	<div ng-init="main.initDropList()">
+		<div class="w3-container w3-theme-d2 center">
+			<h3>Show by price</h3>
+		</div>
+		<br>
+		<div style="margin-left: 2%">
+
+			<p>
+		<h3><u>Select price limit</u></h3>
+				<select ng-model="price"
+					ng-options="cuop.price as cuop.price for cuop in main.coupDropList | orderBy:'price'"
+					ng-change="main.getCoupons(price)">
+					<option value="" selected disabled hidden>-- choose price
+						limit --</option>
+				</select>
+			</p>
+		</div>
+	</div>
+			<div style="margin-left: 2%">
+	
+			<div ng-include="'companypages/showTable.html'"
+				ng-show="main.getByPriceSucceed.flag"></div>
+			<div ng-include="'companypages/flag.html'"></div>
+</div>
+</div>

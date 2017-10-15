@@ -1,0 +1,62 @@
+
+
+
+<div ng-controller="getallpurchasedcouponsbytype as main">
+
+	<div class="w3-container w3-black">
+		<h3 class="center">Purchased Coupons By Type</h3>
+	</div>
+	<div style="margin-left: 2%">
+
+
+		<h3><u>Select Coupon Type</u></h3>
+	<div ng-init="show=false">
+		<form>
+			<select ng-model="main.pcoupontype" ng-change="main.getType() ;  show=true" required="required">
+				<option value="" selected disabled hidden>-- choose type --</option>
+				<option value="FOOD">FOOD</option>
+				<option value="ELECTRICITY">ELECTRICITY</option>
+				<option value="TRAVELLING">TRAVELLING</option>
+				<option value="CAMPING">CAMPING</option>
+				<option value="HEALTH">HEALTH</option>
+				<option value="RESTURANS">RESTURANS</option>
+				<option value="SPORTS">SPORTS</option>
+			</select> <br>  <br>
+
+		</form>
+
+				<table  border="1" ng-show="show&&!main.getAllCouponsFailed.flag">
+					<tr>
+						<th>INDEX</th>
+						<th>ID</th>
+						<th>TITLE</th>
+						<th>START DATE</th>
+						<th>END DATE</th>
+						<th>TYPE</th>
+						<th>MASSAGE</th>
+						<th>PRICE</th>
+						<th>IMAGE</th>
+					</tr>
+					<tr align="center" ng-repeat="coup in main.coupons ">
+						<td>{{$index + 1}}</td>
+						<td>{{coup.id}}</td>
+						<td>{{coup.title}}</td>
+						<td>{{coup.startDate | date : 'MMM d, y'}}</td>
+						<td>{{coup.endDate | date : 'MMM d, y'}}</td>
+						<td>{{coup.type}}</td>
+						<td>{{coup.message}}</td>
+						<td>{{coup.price}}</td>
+						<td><img ng-src="{{coup.image}}" alt="Coupon img"
+							height="120" width="120" /></td>
+
+						</td>
+					</tr>
+				</table>
+		</div>
+		
+				
+				<p style="background-color: OrangeRed; font-weight: bold"
+					ng-show="main.getAllCouponsFailed.flag ">
+					{{main.messageGetAllCoupons.text}}</p>
+				</main>
+				</div>

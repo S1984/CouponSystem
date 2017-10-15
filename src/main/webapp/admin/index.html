@@ -1,0 +1,86 @@
+<html ng-app="facade">
+<!-- ADMIN -->
+
+<head>
+
+
+  <!-- 1 -->
+  <script src="../globalJS/angular.js"></script>
+
+  <!-- 2 Bootstrap -->
+  <script src="../globalJS/bootstrap.js"></script>
+
+ <script src="../globalJS/angular-ui-router.js"></script>
+ 
+ <script src="adminRouter.js"></script>
+ 
+  <!-- company ctrl -->
+  <script src="companycontrollers/createcompany.ctrl.js"></script>
+  <script src="companycontrollers/getallcompanies.ctrl.js"></script>
+  <script src="companycontrollers/getcompany.ctrl.js"></script>
+
+  <!-- company srvc -->
+  <script src="companyservices/getAllCompanies.srvc.js"></script>
+  <script src="companyservices/getCompany.srvc.js"></script>
+  <script src="companyservices/createCompany.srvc.js"></script>
+  <script src="companyservices/deleteCompany.srvc.js"></script>
+  <script src="companyservices/updateCompany.srvc.js"></script>
+
+
+  <!-- Customer ctrl -->
+  <script src="customercontrollers/createcustomer.ctrl.js"></script>
+  <script src="customercontrollers/getallcustomers.ctrl.js"></script>
+  <script src="customercontrollers/getcustomer.ctrl.js"></script>
+
+  <!-- Customer srvc -->
+  <script src="customerservices/getAllCustomers.srvc.js"></script>
+  <script src="customerservices/getCustomer.srvc.js"></script>
+  <script src="customerservices/createCustomer.srvc.js"></script>
+  <script src="customerservices/deleteCustomer.srvc.js"></script>
+  <script src="customerservices/updateCustomer.srvc.js"></script>
+
+  <!-- directive -->
+  <script src="../globalJS/welcome.directive.js"></script>
+  
+      <!-- css -->
+  <link rel="stylesheet" type="text/css" href="../globalCSS/mycss.css">
+  
+  <title>Admin Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <style>
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div ng-init="compExpanded = false; cusExpanded = false" class="w3-sidebar w3-black w3-bar-block" style="width:15%">
+    <h3 class="w3-bar-item">Menu</h3>
+
+    <a href="" class="w3-bar-item w3-button" ng-click="compExpanded = !compExpanded; cusExpanded = false">Companies</a>
+    <ul ng-show="compExpanded" class="submenu">
+      <a href="#/ShowComp" class="w3-bar-item w3-button">Show/Edit/Delete</a>
+      <a href="#/CreateComp" class="w3-bar-item w3-button">Create</a>
+      <a href="#/GetComp" class="w3-bar-item w3-button">Get specific</a>
+    </ul>
+
+    <a href="" class="w3-bar-item w3-button" ng-click="cusExpanded = !cusExpanded ; compExpanded = false">Customers</a>
+    <ul ng-show="cusExpanded" class="submenu">
+      <a href="#/ShowCus" class="w3-bar-item w3-button">Show/Edit/Delete</a>
+      <a href="#/CreateCus" class="w3-bar-item w3-button">Create</a>
+      <a href="#/GetCus" class="w3-bar-item w3-button">Get specific</a>
+    </ul>
+    <a href="/CouponSystemPart2B/Logout" class="w3-bar-item w3-button">Logout/Switch User</a>
+  </div>
+
+  <!-- Page Content -->
+  <div style="margin-left:15%">
+    <div class="w3-container w3-Indigo center"><h1 ng-welcome name="Administrator"> </h1></div>
+    <div  ui-view></div>
+  </div>
+</body>
+
+</html>

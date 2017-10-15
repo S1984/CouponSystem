@@ -1,0 +1,71 @@
+<html ng-app="facade">
+<head>
+
+<!-- 1 -->
+<script src="../globalJS/angular.js"></script>
+
+<!-- 2 Bootstrap -->
+<script src="../globalJS/bootstrap.js"></script>
+
+<!-- 3 Router -->
+<script src="../globalJS/angular-ui-router.js"></script>
+<script src="customerRouter.js"></script>
+
+
+<!-- 4 Customer CTRL -->
+
+<script src="ctrl/purchasecoupon.ctrl.js"></script>
+<script src="ctrl/getallpurchasedcoupons.ctrl.js"></script>
+<script src="ctrl/getallpurchasedcouponsbytype.ctrl.js"></script>
+<script src="ctrl/getallpurchasedcouponsbyprice.ctrl.js"></script>
+<script src="ctrl/getName.ctrl.js"></script>
+
+<!-- 5 Customer SRVC -->
+
+<script src="srvc/getallcoupons.srvc.js"></script>
+<script src="srvc/purchasecoupon.srvc.js"></script>
+<script src="srvc/getallpurchasedcoupons.srvc.js"></script>
+<script src="srvc/getallpurchasedcouponsbyprice.srvc.js"></script>
+<script src="srvc/getallpurchasedcouponsbytype.srvc.js"></script>
+<script src="srvc/getCustomerName.srvc.js"></script>
+
+<!-- 6 directive -->
+<script src="../globalJS/welcome.directive.js"></script>
+
+<title>Customer Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+.center {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div ng-controller="GetName as main">
+		<div class="w3-sidebar w3-black w3-bar-block " style="width: 13%">
+			<h2 class="w3-bar-item">Menu</h2>
+
+			<a href="#/purchasecoupon" class="w3-bar-item w3-button">Purchase
+				Coupon</a> <a href="#/getallpurchasedcoupons"
+				class="w3-bar-item w3-button">Get All Purchased Coupons</a> <a
+				href="#/getallpurchasedcouponsbytype" class="w3-bar-item w3-button">Get
+				All Purchased Coupons By Type</a> <a
+				href="#/getallpurchasedcouponsbyprice" class="w3-bar-item w3-button">Get
+				All Purchased Coupons By Price</a> <a href="/CouponSystemPart2B/Logout"
+				class="w3-bar-item w3-button">Logout/Switch User</a>
+
+		</div>
+		<div style="margin-left: 13%">
+			<div class="w3-container w3-Red">
+				<div class="center">
+					<h1 ng-welcome name="{{main.customerName.name}}"></h1>
+				</div>
+			</div>
+			<div ui-view></div>
+		</div>
+	</div>
+
+</body>
+</html>

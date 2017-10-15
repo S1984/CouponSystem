@@ -1,0 +1,39 @@
+	<table  border="1">
+		<tr>
+			<th>INDEX</th>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Amount</th>
+			<th>Type</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Image</th>
+		</tr>
+		<tr align="center" ng-repeat="coup in main.coupons | orderBy :'id' ">
+			<td>{{$index + 1}}</td>
+			<td>{{coup.id}}</td>
+			<td>{{coup.title}}</td>
+			<td>{{coup.startDate | date : 'MMM d, y'}}</td>
+			<td>
+				<p ng-show="!main.edits[$index]">{{coup.endDate | date : 'MMM d, y'}}</p> <input type="date" ng-show="main.edits[$index]" style="background: lightyellow;"
+				 ng-model="coup.endDate">
+			</td>
+			<td>{{coup.amount}}</td>
+			<td>{{coup.type}}</td>
+			<td>{{coup.message}}</td>
+			<td>
+				<p ng-show="!main.edits[$index]">{{coup.price}}$</p> <input type="number" ng-show="main.edits[$index]" style="background: lightyellow" ng-model="coup.price">
+			</td>
+			<td><img ng-src="{{coup.image}}" alt="Coupon img" height="120" width="120" /></td>
+			<td><button class="button" ng-click="main.deleteCoupon(coup.id)">X</button></td>
+
+			<td>
+				<button class="button button2" ng-show="!main.edits[$index]" ng-click="main.editFunc(coup,$index)">edit</button>
+				<button class="button button3" ng-show="main.edits[$index]" ng-click="main.editFunc(coup,$index)">show</button>
+			</td>
+		</tr>
+	</table>
+	
+	

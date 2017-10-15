@@ -1,0 +1,95 @@
+<div ng-controller="CompanyCreateCoupon as main">
+
+
+	<!-- Create new coupon-->
+	<div class="w3-container w3-theme-l1 center">
+		<h3>Create a new coupon</h3>
+	</div>
+	<br>
+	<div style="margin-left: 2%">
+
+		<form ng-submit="main.createCoupon()">
+			<table>
+				<tr>
+					<th align="left">ID:</th>
+					<th><input ng-model="main.newCoupon.coup.id" type="number"
+						placeholder="Insert only digits" required="required" /></th>
+				</tr>
+				<tr>
+					<th align="left">Title:</th>
+					<th><input ng-model="main.newCoupon.coup.title" type="text"
+						placeholder="Title" required="required" /></th>
+				</tr>
+				<tr>
+					<th align="left">Start Date:</th>
+					<th><input ng-model="main.newCoupon.coup.startDate"
+						type="date" placeholder="" required="required" /></th>
+				</tr>
+				<tr>
+					<th align="left">End Date:</th>
+
+
+					<th><input ng-model="main.newCoupon.coup.endDate" type="date"
+						placeholder="" required="required" /></th>
+				</tr>
+				<tr>
+					<th align="left">Amount:</th>
+					<th><input ng-model="main.newCoupon.coup.amount" type="number"
+						placeholder="Insert only digits" required="required" />
+					</th>
+				</tr>
+				<tr>
+					<th align="left">Type:</th>
+					<th><select ng-model="main.newCoupon.coup.type"
+						required="required">
+							<option value="" selected disabled hidden>Choose coupon
+								type</option>
+							<option value="RESTURANS">RESTURANS</option>
+							<option value="ELECTRICITY">ELECTRICITY</option>
+							<option value="FOOD">FOOD</option>
+							<option value="HEALTH">HEALTH</option>
+							<option value="SPORTS">SPORTS</option>
+							<option value="CAMPING">CAMPING</option>
+							<option value="TRAVELLING">TRAVELLING</option>
+					</select></th>
+				</tr>
+				<tr>
+					<th align="left">Description:</th>
+					<th><input ng-model="main.newCoupon.coup.message" type="text"
+						placeholder="Write a description" required="required" />
+					</th>
+				</tr>
+				<tr>
+					<th align="left">Price:</th>
+					<th><input ng-model="main.newCoupon.coup.price" type="number"
+						placeholder="Insert Price$$$" required="required" />
+					</th>
+				</tr>
+				<tr>
+					<th align="left">Url Image:</th>
+
+					<th><input ng-model="main.newCoupon.coup.image"
+						maxlength="249" type="url" placeholder="http://www.google.com"
+						required="required" /></th>
+				</tr>
+				<tr>
+					<th><br> <br>
+						<button onclick="submit">Create Coupon</button></th>
+				</tr>
+
+			</table>
+		</form>
+		<!--  <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/> -->
+
+
+		<br />
+		<p style="background-color: Chartreuse"
+			ng-show="main.createCouponSucceed.flag">
+			{{main.messageFromNewCoupon.text}}</p>
+
+		<p style="background-color: OrangeRed; font-weight: bold"
+			ng-show="!main.createCouponSucceed.flag">
+			{{main.messageFromNewCoupon.text}}</p>
+
+	</div>
+</div>

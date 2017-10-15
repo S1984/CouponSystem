@@ -1,0 +1,74 @@
+<html ng-app="facade">
+<!-- COMPANY -->
+
+<head>
+  <!-- 1 -->
+  <script src="../globalJS/angular.js"></script>
+  <!-- 2 Bootstrap -->
+  <script src="../globalJS/bootstrap.js"></script>
+
+ <script src="../globalJS/angular-ui-router.js"></script>
+ 
+ <script src="companyRouter.js"></script> 
+  
+ 
+  <!-- company ctrl -->
+  <script src="companycontrollers/createCoupon.ctrl.js"></script>
+  <script src="companycontrollers/getAllCoupons.ctrl.js"></script>
+  <script src="companycontrollers/getName.ctrl.js"></script>
+  <script src="companycontrollers/getCouponByID.ctrl.js"></script>
+  <script src="companycontrollers/getCouponsByPrice.ctrl.js"></script>
+  <!-- company srvc -->
+  <script src="companyservices/createCoupon.srvc.js"></script>
+  <script src="companyservices/getAllCoupons.srvc.js"></script>
+  <script src="companyservices/deleteCoupon.srvc.js"></script>
+  <script src="companyservices/updateCoupon.srvc.js"></script>
+  <script src="companyservices/getCompanyName.srvc.js"></script>
+  <script src="companyservices/getCoupon.srvc.js"></script>
+  <script src="companyservices/getCouponsByPrice.srvc.js"></script>
+  <!-- directive -->
+  <script src="../globalJS/welcome.directive.js"></script>
+  <!-- ctor -->
+  <script src="../globalJS/ctor/coupon.js"></script>
+
+    <!-- css -->
+  <link rel="stylesheet" type="text/css" href="../globalCSS/mycss.css">
+  
+  <title>Company Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+
+  <style>
+   
+  </style>
+</head>
+
+<body>
+  <div ng-controller="GetName as main">
+
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-black w3-bar-block" style="width:15%">
+      <h3 class="w3-bar-item">Coupons Menu</h3>
+      <a href="#/ShowCoup" class="w3-bar-item w3-button">Show All (Edit/Delete)</a>
+      <a href="#/ShowID" class="w3-bar-item w3-button">Show by ID (Edit/Delete)</a>
+      <a href="#/ShowType" class="w3-bar-item w3-button">Show by type (Edit/Delete)</a>
+      <a href="#/ShowPrice" class="w3-bar-item w3-button">Show by price (Edit/Delete)</a>
+      <a href="#/ShowDate" class="w3-bar-item w3-button">Show by Date (Edit/Delete)</a>
+      <a href="#/CreateCoup" class="w3-bar-item w3-button">Create</a>
+      <a href="/CouponSystemPart2B/Logout" class="w3-bar-item w3-button">Logout/Switch User</a>
+    </div>
+    <!-- Page Content -->
+    <div style="margin-left:15%">
+    
+      <div class="w3-container w3-theme-d5 center">
+        <h1 ng-welcome name="{{main.companyName.name}}"> </h1>
+      </div>
+      
+      
+      <div  ui-view></div>
+    </div>
+  </div>
+</body>
+
+</html>

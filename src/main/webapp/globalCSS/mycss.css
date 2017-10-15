@@ -1,0 +1,31 @@
+body {
+
+}
+    .button {
+      /* Red */
+      background-color: #f44336;
+      border: none;
+      color: white;
+      padding: 3px 8px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 0px 0px;
+      cursor: pointer;
+    }
+    /* Blue */
+    .button2 {
+      background-color: #008CBA;
+      width: 70px;
+    }
+
+    /* Green */
+    .button3 {
+      background-color: #4CAF50;
+      width: 70px;
+    }
+
+        .center {
+	text-align: center;
+    }

@@ -1,0 +1,83 @@
+<div ng-controller="CompanyGetAllCouponsByID as main">
+	<div ng-init="main.initDropList()">
+		<div class="w3-container w3-theme-d3 center">
+			<h3>Show by ID</h3>
+		</div>
+		<br>
+		<div style="margin-left: 2%">
+
+			<p>
+				<!-- ng-options="cuop.id as cuop.id for cuop in main.coupons"-->
+				<select ng-model="id"
+					ng-options="cuop.id as cuop.id for cuop in main.coupons | orderBy:'id'"
+					ng-change="main.getById(id)">
+					<option value="" selected disabled hidden>-- choose ID --</option>
+				</select>
+			</p>
+
+			<table border="1" ng-show="main.getCouponSucceed.flag">
+				<tr>
+
+					<th>ID</th>
+					<th>Title</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Amount</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Image</th>
+				</tr>
+				<tr align="center" ng-init="main.coupon.coup.edit=false">
+
+					<td>{{main.coupon.coup.id}}</td>
+					<td>{{main.coupon.coup.title}}</td>
+					<td>{{main.coupon.coup.startDate | date : 'MMM d, y'}}</td>
+					<td>
+						<p ng-show="!main.coupon.coup.edit">{{main.coupon.coup.endDate
+							| date : 'MMM d, y'}}</p> <input type="date"
+						ng-show="main.coupon.coup.edit" style="background: lightyellow;"
+						ng-model="main.coupon.coup.endDate">
+					</td>
+					<td>{{main.coupon.coup.amount}}</td>
+					<td>{{main.coupon.coup.type}}</td>
+					<td>{{main.coupon.coup.message}}</td>
+					<td>
+						<p ng-show="!main.coupon.coup.edit">{{main.coupon.coup.price}}$</p>
+						<input type="number" ng-show="main.coupon.coup.edit"
+						style="background: lightyellow" ng-model="main.coupon.coup.price">
+					</td>
+					<td><img ng-src="{{main.coupon.coup.image}}" alt="Coupon img"
+						height="120" width="120" /></td>
+					<td><button class="button"
+							ng-click="main.deleteCoupon(main.coupon.coup.id)">X</button></td>
+
+					<td>
+						<button class="button button2" ng-show="!main.coupon.coup.edit"
+							ng-click="main.coupon.coup.edit=!main.coupon.coup.edit">edit</button>
+						<button class="button button3" ng-show="main.coupon.coup.edit"
+							ng-click="main.updateCoupon(main.coupon.coup) ;main.coupon.coup.edit=!main.coupon.coup.edit">show</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div style="margin-left: 2%">
+
+		<p style="background-color: OrangeRed; font-weight: bold"
+			ng-show="main.getAllCouponsFailed.flag">
+			{{main.messageGetAllCoupons.text}}</p>
+		<p style="background-color: Chartreuse"
+			ng-show="main.deleteCouponSucceed.flag">
+			{{main.messageFromDeleteCoupon.text}}</p>
+		<p style="background-color: OrangeRed; font-weight: bold"
+			ng-show="main.deleteCouponFailed.flag">
+			{{main.messageFromDeleteCoupon.text}}</p>
+		<p style="background-color: Chartreuse"
+			ng-show="main.updateCouponSucceed.flag">
+			{{main.messageFromUpdateCoupon.text}}</p>
+		<p style="background-color: OrangeRed; font-weight: bold"
+			ng-show="main.updateCouponFailed.flag">
+			{{main.messageFromUpdateCoupon.text}}</p>
+	</div>
+</div>
